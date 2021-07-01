@@ -12,18 +12,18 @@ It uses some face models to recognize faces, get the expressions on those faces 
 
 The following are some of the screenshots of the application
 
-<img src="" />
+![Welcome Page](./screenshots/1.png)
 <p align="center">Welcome Page</p>
 <br>
 
-![Registration]()
+![Registration](./screenshots/2.png)
 <br>
-![Registration]()
+![Registration](./screenshots/3.png)
 
 <p align="center">Employee Registration Page</p>
 <br>
 
-![Dashboard]()
+![Dashboard](./screenshots/4.png)
 <p align="center">Dashboard page</p>
 
 Hope this helps someone, Thanks!
