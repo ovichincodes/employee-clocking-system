@@ -1,0 +1,56 @@
+extends ../layout/layout
+
+block content
+    .row.mb-5
+        .col-sm-12
+            h3.text-center Employee Details
+            .row.mb-5
+                .col-md-4.mt-3
+                    //- Card
+                    .card
+                        //- Card image
+                        .view.overlay
+                            img.card-img-top#profileImg(src='' alt='Employee Image')
+                            a(href='javascript:void(0)')
+                                .mask.rgba-white-slight
+                        //- Card content
+                        .card-body
+                            //- Title
+                            h4.card-title Profile Details
+                            //- Text
+                            p.card-text#txtFname
+                            p.card-text#txtLname
+                            p.card-text#txtEmail
+                            p.card-text#txtPhone
+                    
+                .col-md-8.mt-3
+                    //- Card
+                    .card
+                        //- Card content
+                        .card-body
+                            //- Title
+                            h4.card-title
+                                a#clockInStatus
+                            //- Text
+                            p.card-text= moment(moment()).format('MMMM Do, YYYY')
+                            //- Button
+                            p.text-center
+                                a.btn.btn-default.btn-sm(href='/clock-in') Back to Clock In
+                    
+                    //- other records card
+                    .card.mt-4
+                        //- Card content
+                        .card-body
+                            //- Title
+                            h5.card-title.text-center
+                                a Your Clock In Records
+                            .table-wrapper-scroll-y.my-custom-scrollbar
+                                table.table.table-bordered.table-striped.mb-0
+                                    thead
+                                        tr
+                                            th(scope='col') #
+                                            th(scope='col') Date
+                                            th(scope='col') Clock In Time
+                                            th(scope='col') Clock Out Time
+                                    tbody#recordBody
+

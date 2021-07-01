@@ -1,0 +1,22 @@
+// Navbar
+nav.mb-1.navbar.navbar-expand-lg.navbar-dark.default-color
+	a.navbar-brand(href='/') EmpClockify
+	button.navbar-toggler(type='button' data-toggle='collapse' data-target='#navbarSupportedContent-333' aria-controls='navbarSupportedContent-333' aria-expanded='false' aria-label='Toggle navigation')
+		span.navbar-toggler-icon
+	#navbarSupportedContent-333.collapse.navbar-collapse
+		ul.navbar-nav.mr-auto
+			//- li.nav-item.active
+			//- 	a.nav-link(href='#')
+			//- 		| Home
+			li.nav-item.ml-3
+				a.nav-link(href='/clock-in')
+					i.fa.fa-clock
+					|  Clock In
+			li.nav-item.ml-3
+				a.nav-link(href='/clock-out')
+					i.fa.fa-clock
+					|  Clock Out
+			li.nav-item.ml-3
+				a.nav-link(href='/register')
+					i.fa.fa-user-plus
+					|  New Employee

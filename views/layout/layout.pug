@@ -1,0 +1,29 @@
+doctype html
+html(lang='en')
+    head
+        meta(charset='UTF-8')
+        meta(name='viewport', content='width=device-width, initial-scale=1, shrink-to-fit=no')
+        meta(http-equiv='X-UA-Compatible', content='ie=edge')
+        meta(http-equiv='Content-Language', content='en')
+        title= title + ' - EmpClockify'
+        link(rel='stylesheet', href='/css/all.css')
+        link(rel='stylesheet', href='https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap')
+        link(rel='stylesheet', href='/css/bootstrap.min.css')
+        link(rel='stylesheet', href='/css/mdb.min.css')
+        link(rel='stylesheet', href='/css/style.css')
+        script(type="text/javascript" src='/js/face-api.min.js')
+    body
+        include ../inc/navbar
+        main(style='margin-top: 30px')
+            .container
+                //- main layout content goes here
+                block content
+        include ../inc/footer
+        script(type="text/javascript" src='/js/jquery.min.js')
+        script(type="text/javascript" src='/js/popper.min.js')
+        script(type="text/javascript" src='/js/bootstrap.min.js')
+        script(type="text/javascript" src='/js/mdb.min.js')
+        script(type="text/javascript" src='/js/bootstrap-notify.js')
+        script(type="text/javascript" src='/js/axios.min.js')
+        script(type="text/javascript" src='/js/moment.js')
+        script(type="text/javascript" src='/js/script.js')

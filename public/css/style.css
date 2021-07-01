@@ -1,0 +1,21 @@
+.video-div {
+	/* margin: 0;
+	padding: 0; */
+	/* width: 100vw;
+	height: 100vh; */
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+canvas {
+	/* position: absolute; */
+}
+.my-custom-scrollbar {
+	position: relative;
+	height: 200px;
+	overflow: auto;
+}
+.table-wrapper-scroll-y {
+	display: block;
+}

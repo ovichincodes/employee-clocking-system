@@ -1,0 +1,18 @@
+extends ../layout/layout
+
+block content
+    h3.text-center Employee Clock In/Clock Out System
+    .row.mt-5
+        .offset-md-2.col-md-8
+            .card
+                //- Card content
+                .card-body
+                    //- Title
+                    h5.card-title.text-center Rules to using this System
+                    ul.list-group.my-4
+                        li.list-group-item 1. Ensure you register first before using this system.
+                        li.list-group-item 2. Ensure to Clock In/Out everyday for proper recording.
+                        li.list-group-item 3. Clock In/Out should be done once a day, as just this once will be recorded.
+                        li.list-group-item 4. For Clock In/Out, ensure to remove all forms of face caps, masks, eye glasses for faster facial recognition.
+                    p.text-center
+                        a.btn.btn-default.btn-sm(href='/clock-in') Clock In

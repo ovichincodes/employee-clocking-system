@@ -1,0 +1,111 @@
+extends ../layout/layout
+
+block content
+    .row.mb-5
+        .offset-lg-2.col-lg-8
+            h3.text-center Register New Employee
+            form(action="/register" method="POST")
+                //- Vertical Steppers
+                .row.mt-1
+                    .col-md-12
+                        //- Stepers Wrapper
+                        ul.stepper.stepper-vertical(style="margin: 0em !important;")
+                            //- First Step
+                            li.active
+                                a(href='javascript:void(0)' id="empDataToggle")
+                                    span.circle 1
+                                    span.label Fill In Employee's Bio Data
+                                //- Section Description
+                                .step-content.lighten-3(style="width: 90% !important;")
+                                    div(id="theToggledEmpData")
+                                        //- hoold the base64 captured image data from the web cam
+                                        input(type="hidden" id="imageData" value="")
+                                        //- First name
+                                        label
+                                            i.fa.fa-edit
+                                            |  First Name
+                                        input.form-control.mb-4(type='text' id="fname" placeholder='First name' required)
+                                        //- Last name
+                                        label
+                                            i.fa.fa-edit
+                                            |  Last Name
+                                        input.form-control.mb-4(type='text' id="lname" placeholder='Last name' required)
+                                        //- E-mail
+                                        label
+                                            i.fa.fa-envelope
+                                            |  Email Address
+                                        input.form-control.mb-4(type='email' id="email" placeholder='E-mail' required)
+                                        //- Phone Number
+                                        label
+                                            i.fa.fa-mobile
+                                            |  Phone Number
+                                        input.form-control.mb-4(type='text' id="phone" maxlength="11" minlength="11" placeholder='Phone Number' required)
+                                        //- Password
+                                        label
+                                            i.fa.fa-lock
+                                            |  Password
+                                        input.form-control(type='password' minlength="6" id="password" placeholder='Password' required)
+                            //- Second Step
+                            li.completed
+                                //- Section Title
+                                a(href='javascript:void(0)' id="empCaptureToggle")
+                                    span.circle 2
+                                    span.label Capture Face
+                                //- Section Description
+                                .step-content.lighten-3(style="width: 90% !important;")
+                                    div(id="theToggledCaptureFace" style="display: none;")
+                                        video#video(autoplay='' muted='' style="max-width: 100%; height: auto; display: none;")
+                                        div.text-center
+                                            button.btn.btn-default.btn-sm(type="button")#openCamera Open Camera
+                                            button.btn.btn-primary.btn-sm(type="button")#snap Capture
+                                            button.btn.btn-danger.btn-sm(type="button")#closeCamera Close Camera
+                                            canvas#canvas(width='600' height='480' style="display: none;")
+                //- Steppers Navigation
+                .row.mb-5
+                    .col-md-12.text-center
+                        button.btn.btn-default.btn-sm(id="btnRegister" type="submit") Register
+
+            script.
+                const video = document.getElementById("video");
+                const snap = document.getElementById("snap");
+                const openCamera = document.getElementById("openCamera");
+                const closeCamera = document.getElementById("closeCamera");
+                const canvas = document.getElementById("canvas");
+                let videoStream;
+                function startVideo() {
+                    navigator.getUserMedia(
+                        { video: {} },
+                        (stream) => {
+                            video.srcObject = stream;
+                            videoStream = stream;
+                        },
+                        (err) => console.error(err)
+                    );
+                }
+                //- startVideo();
+                var context = canvas.getContext("2d");
+                snap.addEventListener("click", function () {
+                 	context.drawImage(video, 0, 0, 600, 480);
+                 	video.pause();
+                 	video.style.display = "none";
+                    canvas.style.display = "block";
+                 	videoStream.getTracks()[0].stop();
+                    document.getElementById('imageData').value = canvas.toDataURL("image/png");
+                    console.log(canvas.toDataURL("image/png"));
+                });
+                //- open camera
+                openCamera.addEventListener("click", function () {
+                    video.style.display = "block";
+                    canvas.style.display = "none";
+                 	startVideo();
+                });
+
+                //- close camera
+                closeCamera.addEventListener("click", function () {
+                    if (videoStream !== undefined) {
+                        video.style.display = "none";
+                        canvas.style.display = "none";
+                        document.getElementById('theToggledCaptureFace').style.display = "none";
+                        videoStream.getTracks()[0].stop();
+                    }
+                });
